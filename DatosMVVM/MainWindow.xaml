@@ -1,0 +1,23 @@
+﻿<Window x:Class="DatosMVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DatosMVVM"
+        mc:Ignorable="d"
+        Title="Datos" Height="450" Width="800" Icon="Ico/128.ico">
+    <Window.CommandBindings>
+        <CommandBinding x:Name="ActualizarCommand" Command="local:CustomCommands.Actualizar" Executed="ActualizarCommand_Executed" CanExecute="ActualizarCommand_CanExecute"/>
+    </Window.CommandBindings>
+    <StackPanel Orientation="Vertical" Margin="10">
+        <ComboBox HorizontalAlignment="Left" Width="200" ItemsSource="{Binding Clientes}"
+                          DisplayMemberPath="id" Margin="0,10" x:Name="ModificarComboBox" SelectedItem="{Binding ClienteSeleccionado}"/>
+        <TextBlock Text="Identificador"/>
+        <TextBox Text="{Binding ClienteSeleccionado.id}" AcceptsReturn="False" Margin="0,0,0,5"/>
+        <TextBlock Text="Nombre"/>
+        <TextBox Text="{Binding ClienteSeleccionado.nombre}" AcceptsReturn="False" Margin="0,0,0,5"/>
+        <TextBlock Text="Apellido"/>
+        <TextBox Text="{Binding ClienteSeleccionado.apellido}" AcceptsReturn="False" Margin="0,0,0,5"/>
+        <Button Content="Modificar" HorizontalAlignment="Left" Margin="0,10" Padding="30,0" Command="local:CustomCommands.Actualizar"/>
+    </StackPanel>
+</Window>
